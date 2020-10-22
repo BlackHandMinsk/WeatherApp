@@ -12,7 +12,7 @@ import java.net.URL;
 import java.net.URLConnection;
 
 public class Controller {
-
+private static final String API = "введите нужный АПИ погоды";
     @FXML
     private TextField city;
 
@@ -41,7 +41,7 @@ public class Controller {
         getData.setOnAction(event ->{
             String getUserCity = city.getText().trim();
             if(!getUserCity.equals("")) {
-                String output = getUrlContent("http://api.openweathermap.org/data/2.5/weather?q=" + getUserCity + "&units=metric&appid=77974b02a58eea5afa8cf61fc0a1b1fe" );
+                String output = getUrlContent("http://api.openweathermap.org/data/2.5/weather?q=" + getUserCity + "&units=metric&appid="+API );
                 if (!output.isEmpty()) {
                     JSONObject obj = new JSONObject(output);
                     temp.setText("Температура:" + obj.getJSONObject("main" ).getDouble("temp" ));
